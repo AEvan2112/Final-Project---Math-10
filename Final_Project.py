@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from pandas.api.types import is_numeric_dtype
 import altair as alt
-import sklearn
+
 from sklearn.cluster import KMeans
 
 st.title("U.S. Educational Finances Data Analyzer")
