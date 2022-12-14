@@ -15,7 +15,7 @@ st.write("40029708")
 
 st.write("Reading the district level csv file and cleaning it from not applicable values (2)")
 
-df_district = pd.read_csv(r"districts - districts.csv",na_values = " ")
+df_district = pd.read_csv(r"districts.csv",na_values = " ")
 df_district = df_district[df_district.notna().all(axis=1)].copy()
 
 st.write("Checking the shape of the dataframe")
