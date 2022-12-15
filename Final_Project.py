@@ -15,17 +15,30 @@ st.write("40029708")
 
 st.write("Reading the district level csv file and cleaning it from not applicable values (2)")
 
-df_district = pd.read_csv(r"districts.csv",na_values = " ")
+df_district = pd.read_csv(r"C:\Users\alexa\Downloads\districts-reduced.csv",na_values = " ")
 df_district = df_district[df_district.notna().all(axis=1)].copy()
 
 st.write("Checking the shape of the dataframe")
 
 df_district.shape
 
-st.write("Please enter your state choice with capital letters only on the first letters of the words")
+st.write("Reading the states level csv file and cleaning it from not applicable values")
 
-state_choice = st.text_input("Choose the state")
+df_state = pd.read_csv(r"C:\Users\alexa\Downloads\states.csv",na_values = " ")
+df_state = df_state[df_state.notna().all(axis=1)].copy()
 
+st.write("Checking the shape of the state level dataframe to ensure that it is compatible with Altair")
+
+df_state.shape
+
+st.write("Gaining the names of the states")
+
+df_states_name = pd.DataFrame()
+df_states_name = df_state.STATE[:51].copy()
+
+st.write("Please enter your state choice")
+
+state_choice = st.selectbox("Choose the state",options = df_states_name)
 df_dchoice = df_district[df_district["STATE"] == state_choice].copy()
 
 st.write("Since the Altair library can only handle 5000 data, the app only takes the first 5000 rows in the dataframe df_district.")
@@ -92,13 +105,6 @@ district_chart = alt.Chart(df_dchoice).mark_circle().encode(
 st.altair_chart(district_chart)
 
 st.write("Reading the state level csv file and cleaning it from not applicable values (2)")
-
-df_state = pd.read_csv(r"states.csv",na_values = " ")
-df_state = df_state[df_state.notna().all(axis=1)].copy()
-
-st.write("Checking the shape of the state level dataframe to ensure that it is compatible with Altair")
-
-df_state.shape
 
 df_schoice = df_state[df_state["STATE"] == state_choice].copy()
 
