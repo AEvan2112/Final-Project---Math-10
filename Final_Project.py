@@ -15,7 +15,7 @@ st.write("40029708")
 
 st.write("Reading the district level csv file and cleaning it from not applicable values (2)")
 
-df_district = pd.read_csv(r"C:\Users\alexa\Downloads\districts-reduced.csv",na_values = " ")
+df_district = pd.read_csv(r"districts-reduced.csv",na_values = " ")
 df_district = df_district[df_district.notna().all(axis=1)].copy()
 
 st.write("Checking the shape of the dataframe")
@@ -24,7 +24,7 @@ df_district.shape
 
 st.write("Reading the states level csv file and cleaning it from not applicable values")
 
-df_state = pd.read_csv(r"C:\Users\alexa\Downloads\states.csv",na_values = " ")
+df_state = pd.read_csv(r"states.csv",na_values = " ")
 df_state = df_state[df_state.notna().all(axis=1)].copy()
 
 st.write("Checking the shape of the state level dataframe to ensure that it is compatible with Altair")
